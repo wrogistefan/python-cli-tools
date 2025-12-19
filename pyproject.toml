@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-cli-tools"
+version = "0.1.0"
+description = "A collection of practical Python CLI tools"
+readme = "README.md"
+authors = [ { name = "Łukasz Perek" } ]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "License :: OSI Approved :: MIT License",
+]
+dependencies = []
+
+# Installable console scripts for each CLI tool
+[project.scripts]
+file-organizer = "file_organizer.file_organizer:main"
+password-generator = "password_generator.password_generator:main"
+weather-cli = "weather_cli.weather_cli:main"
