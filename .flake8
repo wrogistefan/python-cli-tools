@@ -1,6 +1,8 @@
 [flake8]
 max-line-length = 100
 ignore = E203, W503
+exclude = .venv,venv,build,dist
 per-file-ignores =
     tests/*: F401
+    **/tests/*: F401
 max-complexity = 10

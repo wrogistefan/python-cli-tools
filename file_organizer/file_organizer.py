@@ -1,7 +1,9 @@
-"""File Organizer - Organize files by extension"""
+"""File Organizer - Organize files by extension."""
+
 import os
 import shutil
 import argparse
+
 
 class FileOrganizer:
     def __init__(self, directory: str):
@@ -9,7 +11,7 @@ class FileOrganizer:
             raise ValueError(f"{directory} is not a valid directory.")
         self.directory = directory
 
-    def organize(self):
+    def organize(self) -> None:
         for filename in os.listdir(self.directory):
             file_path = os.path.join(self.directory, filename)
 
@@ -24,13 +26,15 @@ class FileOrganizer:
                 shutil.move(file_path, os.path.join(target_dir, filename))
                 print(f"Moved: {filename} -> {target_dir}")
 
-def main():
+
+def main() -> None:
     parser = argparse.ArgumentParser(description="Organize files by extension.")
     parser.add_argument("directory", help="Path to the directory to organize")
     args = parser.parse_args()
 
     organizer = FileOrganizer(args.directory)
     organizer.organize()
+
 
 if __name__ == "__main__":
     main()

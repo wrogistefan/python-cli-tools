@@ -1,10 +1,17 @@
-"""Password Generator - Generate strong passwords"""
+"""Password Generator - Generate strong passwords."""
+
 import argparse
 import random
 import string
 
+
 class PasswordGenerator:
-    def __init__(self, length: int = 12, use_digits: bool = True, use_specials: bool = True):
+    def __init__(
+        self,
+        length: int = 12,
+        use_digits: bool = True,
+        use_specials: bool = True,
+    ):
         self.length = length
         self.use_digits = use_digits
         self.use_specials = use_specials
@@ -18,7 +25,8 @@ class PasswordGenerator:
 
         return "".join(random.choice(chars) for _ in range(self.length))
 
-def main():
+
+def main() -> None:
     parser = argparse.ArgumentParser(description="Generate a random password.")
     parser.add_argument("-l", "--length", type=int, default=12, help="Password length")
     parser.add_argument("--no-digits", action="store_true", help="Exclude digits")
@@ -28,9 +36,10 @@ def main():
     generator = PasswordGenerator(
         length=args.length,
         use_digits=not args.no_digits,
-        use_specials=not args.no_specials
+        use_specials=not args.no_specials,
     )
     print(generator.generate())
+
 
 if __name__ == "__main__":
     main()

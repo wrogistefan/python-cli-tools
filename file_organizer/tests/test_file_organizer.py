@@ -1,9 +1,11 @@
 """Tests for file organizer"""
+
 import os
 import shutil
 import tempfile
 import pytest
 from ..file_organizer import FileOrganizer
+
 
 def create_temp_files(base_dir, files):
     """Helper to create dummy files in a temporary directory."""
@@ -11,9 +13,11 @@ def create_temp_files(base_dir, files):
         with open(os.path.join(base_dir, f), "w") as fp:
             fp.write("dummy content")
 
+
 def test_invalid_directory():
     with pytest.raises(ValueError):
         FileOrganizer("not_a_real_dir")
+
 
 def test_organize_creates_folders_and_moves_files():
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -36,6 +40,7 @@ def test_organize_creates_folders_and_moves_files():
                 ext = "no_extension"
             target_path = os.path.join(tmpdir, ext, f)
             assert os.path.isfile(target_path)
+
 
 def test_no_files_in_directory():
     with tempfile.TemporaryDirectory() as tmpdir:
