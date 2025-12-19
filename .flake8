@@ -1,0 +1,15 @@
+[flake8]
+# Dłuższe linie są akceptowalne, np. przy importach czy testach
+max-line-length = 100
+
+# Ignoruj niektóre reguły, które są zbyt ortodoksyjne
+ignore =
+    E203,  # spacje przed ':', często koliduje z black
+    W503   # line break before binary operator (black robi odwrotnie)
+
+# Możesz wyłączyć nieużywane importy tylko w testach
+per-file-ignores =
+    tests/*: F401
+
+# Opcjonalnie: ogranicz złożoność funkcji
+max-complexity = 10

@@ -22,3 +22,8 @@ dependencies = []
 file-organizer = "file_organizer.file_organizer:main"
 password-generator = "password_generator.password_generator:main"
 weather-cli = "weather_cli.weather_cli:main"
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+skip-string-normalization = true
