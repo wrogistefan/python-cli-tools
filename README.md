@@ -3,6 +3,8 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+![Tests](https://github.com/wrogistefan/python-cli-tools/actions/workflows/ci.yml/badge.svg)
+[![codecov](https://codecov.io/gh/wrogistefan/python-cli-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/wrogistefan/python-cli-tools)
 
 A collection of small, well-tested command-line utilities implemented in Python. Each tool is self-contained, tested, and designed to be easy to run locally or install as a console command.
 

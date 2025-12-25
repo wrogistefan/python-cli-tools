@@ -6,33 +6,59 @@ on:
   pull_request:
     branches: [ "main" ]
 
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
   lint:
     name: Lint (flake8 + black)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install dependencies
+
+      - name: Install lint dependencies
         run: pip install flake8 black
+
       - name: Run flake8
         run: flake8 .
+
       - name: Run black check
         run: black --check .
 
   tests:
-    name: Unit tests (pytest)
+    name: Unit tests + Coverage + Codecov
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: Run pytest
-        run: pytest --maxfail=1 --disable-warnings -q
+        run: |
+          pip install -r requirements.txt
+          pip install -e .
+          pip install pytest pytest-cov
+
+      - name: Run tests with coverage
+        run: |
+          pytest --cov=./ --cov-report=xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          
+          files: ./coverage.xml
+          fail_ci_if_error: true
