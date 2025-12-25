@@ -178,7 +178,8 @@ def test_cli_missing_arguments(capsys):
 def test_cli_missing_weather_data(capsys):
     """Test CLI behavior when API returns no current_weather field."""
     with (
-        patch("weather_cli.weather_cli.geocode_city", return_value=(52.52, 13.41, "Berlin", "Germany")),
+        patch("weather_cli.weather_cli.geocode_city",
+            return_value=(52.52, 13.41, "Berlin", "Germany")),
         patch("weather_cli.weather_cli.fetch_weather", return_value={}),
         patch(
             "argparse.ArgumentParser.parse_args",
