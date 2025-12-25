@@ -65,12 +65,7 @@ def fetch_weather(lat: float, lon: float):
     """
     try:
         response = requests.get(
-            WEATHER_URL,
-            params={
-                "latitude": lat,
-                "longitude": lon,
-                "current_weather": True
-            }
+            WEATHER_URL, params={"latitude": lat, "longitude": lon, "current_weather": True}
         )
         response.raise_for_status()
         return response.json()
