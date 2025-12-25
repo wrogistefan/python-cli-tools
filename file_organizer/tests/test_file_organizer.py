@@ -28,6 +28,7 @@ from file_organizer.file_organizer import FileOrganizer
 # Helper
 # ============================================================
 
+
 def create_temp_files(base_dir, files):
     """Create dummy files inside a temporary directory."""
     for f in files:
@@ -39,6 +40,7 @@ def create_temp_files(base_dir, files):
 # Constructor tests
 # ============================================================
 
+
 def test_invalid_directory():
     """Ensure FileOrganizer raises ValueError for invalid directory paths."""
     with pytest.raises(ValueError):
@@ -48,6 +50,7 @@ def test_invalid_directory():
 # ============================================================
 # Core organize() tests
 # ============================================================
+
 
 def test_organize_creates_folders_and_moves_files():
     """Test that files are moved into extension-based folders."""
@@ -155,6 +158,7 @@ def test_reorganize_is_idempotent():
 # CLI tests
 # ============================================================
 
+
 def test_cli_invocation(capsys):
     """Test CLI invocation with a valid directory."""
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -165,6 +169,7 @@ def test_cli_invocation(capsys):
             return_value=argparse.Namespace(directory=tmpdir),
         ):
             from file_organizer.file_organizer import main
+
             main()
 
         captured = capsys.readouterr()

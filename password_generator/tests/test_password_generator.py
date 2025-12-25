@@ -18,6 +18,7 @@ from password_generator.password_generator import PasswordGenerator
 # PasswordGenerator class tests
 # ============================================================
 
+
 def test_default_password_length():
     """Ensure the default password length is 12 characters."""
     gen = PasswordGenerator()
@@ -86,15 +87,21 @@ def test_generate_deterministic_with_mock():
 # CLI tests
 # ============================================================
 
+
 def test_cli_default_length(capsys):
     """Test CLI with default settings."""
     with (
-        patch("argparse.ArgumentParser.parse_args",
-              return_value=argparse.Namespace(length=12, no_digits=False, no_specials=False)),
-        patch("password_generator.password_generator.PasswordGenerator.generate",
-              return_value="ABC123!@#XYZ"),
+        patch(
+            "argparse.ArgumentParser.parse_args",
+            return_value=argparse.Namespace(length=12, no_digits=False, no_specials=False),
+        ),
+        patch(
+            "password_generator.password_generator.PasswordGenerator.generate",
+            return_value="ABC123!@#XYZ",
+        ),
     ):
         from password_generator.password_generator import main
+
         main()
         captured = capsys.readouterr()
         assert "ABC123!@#XYZ" in captured.out
@@ -103,12 +110,17 @@ def test_cli_default_length(capsys):
 def test_cli_no_digits(capsys):
     """Test CLI when --no-digits flag is used."""
     with (
-        patch("argparse.ArgumentParser.parse_args",
-              return_value=argparse.Namespace(length=8, no_digits=True, no_specials=False)),
-        patch("password_generator.password_generator.PasswordGenerator.generate",
-              return_value="Ab!Cd!Ef"),
+        patch(
+            "argparse.ArgumentParser.parse_args",
+            return_value=argparse.Namespace(length=8, no_digits=True, no_specials=False),
+        ),
+        patch(
+            "password_generator.password_generator.PasswordGenerator.generate",
+            return_value="Ab!Cd!Ef",
+        ),
     ):
         from password_generator.password_generator import main
+
         main()
         captured = capsys.readouterr()
         assert "Ab!Cd!Ef" in captured.out
@@ -117,12 +129,17 @@ def test_cli_no_digits(capsys):
 def test_cli_no_specials(capsys):
     """Test CLI when --no-specials flag is used."""
     with (
-        patch("argparse.ArgumentParser.parse_args",
-              return_value=argparse.Namespace(length=8, no_digits=False, no_specials=True)),
-        patch("password_generator.password_generator.PasswordGenerator.generate",
-              return_value="Ab12Cd34"),
+        patch(
+            "argparse.ArgumentParser.parse_args",
+            return_value=argparse.Namespace(length=8, no_digits=False, no_specials=True),
+        ),
+        patch(
+            "password_generator.password_generator.PasswordGenerator.generate",
+            return_value="Ab12Cd34",
+        ),
     ):
         from password_generator.password_generator import main
+
         main()
         captured = capsys.readouterr()
         assert "Ab12Cd34" in captured.out
@@ -131,12 +148,16 @@ def test_cli_no_specials(capsys):
 def test_cli_custom_length(capsys):
     """Test CLI with custom length argument."""
     with (
-        patch("argparse.ArgumentParser.parse_args",
-              return_value=argparse.Namespace(length=5, no_digits=False, no_specials=False)),
-        patch("password_generator.password_generator.PasswordGenerator.generate",
-              return_value="ABCDE"),
+        patch(
+            "argparse.ArgumentParser.parse_args",
+            return_value=argparse.Namespace(length=5, no_digits=False, no_specials=False),
+        ),
+        patch(
+            "password_generator.password_generator.PasswordGenerator.generate", return_value="ABCDE"
+        ),
     ):
         from password_generator.password_generator import main
+
         main()
         captured = capsys.readouterr()
         assert "ABCDE" in captured.out
