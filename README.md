@@ -45,16 +45,36 @@ python -m file_organizer.file_organizer ./downloads
 # console scripts (after `pip install -e .`)
 file-organizer ./downloads
 password-generator -l 16 --no-specials
-weather-cli "London"
+weather-cli --city London
+
 ```
 
-## Tools & Usage
+### Tools & Usage
+1. File Organizer
+    Organizes files into folders by extension.
+    See file_organizer/file_organizer.py  
+    or run:
+    file-organizer <directory>
 
-- File Organizer — organizes files into folders by extension. See [file_organizer/file_organizer.py](file_organizer/file_organizer.py) or run `file-organizer <directory>`.
-- Password Generator — generate strong passwords. See [password_generator/password_generator.py](password_generator/password_generator.py) or run `password-generator`.
-- Weather CLI — returns a short weather summary (currently mocked). See [weather_cli/weather_cli.py](weather_cli/weather_cli.py) or run `weather-cli <city>`.
 
-See [docs/usage_examples.md](docs/usage_examples.md) for more detailed examples and expected output.
+
+2. Password Generator
+    Generates strong, customizable passwords.
+    See password_generator/password_generator.py  
+    or run:
+    password-generator
+
+3. Weather CLI (updated in v0.2.0)
+    Fetches real-time weather data using Open-Meteo.
+
+    Usage
+    Run as a module:
+
+    bash
+    python -m weather_cli.weather_cli --city New York
+    python -m weather_cli.weather_cli --lat 37.075 --lon 15.286
+
+    See [docs/usage_examples.md](docs/usage_examples.md) for more detailed examples and expected output.
 
 ## Running Tests
 
@@ -78,7 +98,7 @@ python -m build
 ## Development notes
 
 - Use the `docs/usage_examples.md` to expand runnable examples.
-- `weather_cli` currently returns mocked output; add an HTTP client and `OPENWEATHER_API_KEY` environment variable to integrate a real API.
+
 
 ## Contributing
 

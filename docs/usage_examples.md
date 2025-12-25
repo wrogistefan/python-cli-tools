@@ -55,19 +55,31 @@ k9F3nAq2Zo1LmV7$
 - **File**: [weather_cli/weather_cli.py](weather_cli/weather_cli.py)
 - **Purpose**: Print a short weather summary for a city (currently mocked).
 - **Command**:
+## Weather CLI — Usage
 
-```
-python -m weather_cli.weather_cli "New York"
-# or
-python weather_cli/weather_cli.py London
-```
+The Weather CLI supports two ways of specifying a location:
+
+- by city name (`--city`)
+- by geographic coordinates (`--lat` + `--lon`)
+
+### Run as a module
+
+```bash
+python -m weather_cli.weather_cli --city New York
+python -m weather_cli.weather_cli --lat 37.075 --lon 15.286
+
 - **Example output**:
 
-```
-Weather in London: Sunny, 18°C
-```
+📍 Location: Syracuse, Italy (37.07542, 15.28664)
+
+🌤️  Current Weather:
+   🌡️  Temperature: 12.9°C
+   💨  Wind Speed: 2.5 km/h
+   🧭  Wind Direction: 270°
+   ⏱️  Observation Time: 2025-12-25T17:45
+
 
 **Notes & Next Steps**
 - All three tools expose a `main()` and can be run as modules (`python -m <package>.<module>`).
-- To adapt `weather_cli` to a real API, add an API client and expose an environment variable for the API key.
+
 - To integrate examples into the project README, copy relevant snippets from this file into README.md.

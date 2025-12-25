@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-cli-tools"
-version = "0.1.0"
+version = "0.2.0"
 description = "A collection of practical Python CLI tools"
 readme = "README.md"
 authors = [ { name = "Łukasz Perek" } ]
@@ -15,7 +15,10 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "License :: OSI Approved :: MIT License",
 ]
-dependencies = []
+dependencies = [
+    "requests",
+]
+
 
 # Installable console scripts for each CLI tool
 [project.scripts]
