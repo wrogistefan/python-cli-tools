@@ -22,6 +22,7 @@ import weather_cli.weather_cli as weather_cli
 # Geocoding tests
 # ============================================================
 
+
 def test_geocode_city_success():
     """Test successful geocoding response with valid city data."""
     mock_response = {
@@ -36,10 +37,7 @@ def test_geocode_city_success():
     }
 
     with patch("requests.get") as mock_get:
-        mock_get.return_value = MagicMock(
-            json=lambda: mock_response,
-            raise_for_status=lambda: None
-        )
+        mock_get.return_value = MagicMock(json=lambda: mock_response, raise_for_status=lambda: None)
 
         lat, lon, name, country = weather_cli.geocode_city("Berlin")
 
@@ -54,10 +52,7 @@ def test_geocode_city_not_found():
     mock_response = {"results": []}
 
     with patch("requests.get") as mock_get, pytest.raises(SystemExit):
-        mock_get.return_value = MagicMock(
-            json=lambda: mock_response,
-            raise_for_status=lambda: None
-        )
+        mock_get.return_value = MagicMock(json=lambda: mock_response, raise_for_status=lambda: None)
         weather_cli.geocode_city("Atlantis")
 
 
@@ -72,6 +67,7 @@ def test_geocode_city_api_error():
 # Weather fetch tests
 # ============================================================
 
+
 def test_fetch_weather_success():
     """Test successful weather data retrieval."""
     mock_response = {
@@ -84,10 +80,7 @@ def test_fetch_weather_success():
     }
 
     with patch("requests.get") as mock_get:
-        mock_get.return_value = MagicMock(
-            json=lambda: mock_response,
-            raise_for_status=lambda: None
-        )
+        mock_get.return_value = MagicMock(json=lambda: mock_response, raise_for_status=lambda: None)
 
         data = weather_cli.fetch_weather(52.52, 13.41)
 
@@ -105,6 +98,7 @@ def test_fetch_weather_api_error():
 # ============================================================
 # CLI tests
 # ============================================================
+
 
 def test_cli_city_success(capsys):
     """Simulate running the CLI with --city and verify output formatting."""
@@ -182,7 +176,6 @@ def test_cli_missing_weather_data(capsys):
             "weather_cli.weather_cli.geocode_city",
             return_value=(52.52, 13.41, "Berlin", "Germany"),
         ),
-
         patch("weather_cli.weather_cli.fetch_weather", return_value={}),
         patch(
             "argparse.ArgumentParser.parse_args",
