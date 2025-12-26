@@ -7,11 +7,13 @@ All notable changes to this project will be documented in this file.
 ## [v0.2.10] — 2025-12-26
 
 ### Fixed
-- Simplified publish workflow by removing GPG verification to ensure reliable publishing.
+- Stabilized the `publish.yml` workflow to reliably verify GPG-signed tags using the correct tag reference and fetched tag objects.
+- Ensured that only GPG-signed tags trigger the PyPI publication pipeline.
 
 ### Notes
-- Publishing now works on any version tag push.
-- No functional code changes.
+- No functional code changes in CLI tools.
+- This release finalizes the secure, GPG-gated CI/CD pipeline for `python-cli-tools`.
+
 
 ## [v0.2.9] — 2025-12-26
 
