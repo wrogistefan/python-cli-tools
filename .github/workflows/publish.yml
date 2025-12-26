@@ -20,6 +20,12 @@ jobs:
         run: |
           git fetch --tags --force
 
+      - name: Import public GPG key
+        run: |
+          echo "$GPG_PUBLIC_KEY" | gpg --import
+        env:
+          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
+
       - name: Verify GPG tag signature
         run: |
           TAG="${GITHUB_REF#refs/tags/}"
