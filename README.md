@@ -2,12 +2,10 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Tests](https://github.com/wrogistefan/python-cli-tools/actions/workflows/tests.yml/badge.svg)
+![CI Pipeline](https://github.com/wrogistefan/python-cli-tools/actions/workflows/tests.yml/badge.svg)
 [![codecov](https://codecov.io/gh/wrogistefan/python-cli-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/wrogistefan/python-cli-tools)
 [![PyPI version](https://img.shields.io/pypi/v/python-cli-tools.svg)](https://pypi.org/project/python-cli-tools/)
-[![Python versions](https://img.shields.io/pypi/pyversions/python-cli-tools.svg)](https://pypi.org/project/python-cli-tools/)
 [![Wheel](https://img.shields.io/pypi/wheel/python-cli-tools.svg)](https://pypi.org/project/python-cli-tools/)
-[![Downloads](https://pepy.tech/badge/python-cli-tools)](https://pepy.tech/project/python-cli-tools)
 
 
 A collection of practical, well-tested command-line utilities implemented in Python. This project demonstrates modular CLI tool development with a clean `src/` layout, comprehensive testing, and easy distribution via PyPI.
