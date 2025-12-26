@@ -4,6 +4,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.2.10] — 2025-12-26
+
+### Fixed
+- Simplified publish workflow by removing GPG verification to ensure reliable publishing.
+
+### Notes
+- Publishing now works on any version tag push.
+- No functional code changes.
+
 ## [v0.2.9] — 2025-12-26
 
 ### Fixed
