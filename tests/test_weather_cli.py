@@ -37,7 +37,9 @@ def test_geocode_city_success():
     }
 
     with patch("requests.get") as mock_get:
-        mock_get.return_value = MagicMock(json=lambda: mock_response, raise_for_status=lambda: None)
+        mock_get.return_value = MagicMock(
+            json=lambda: mock_response, raise_for_status=lambda: None
+        )
 
         lat, lon, name, country = weather_cli.geocode_city("Berlin")
 
@@ -52,7 +54,9 @@ def test_geocode_city_not_found():
     mock_response = {"results": []}
 
     with patch("requests.get") as mock_get, pytest.raises(SystemExit):
-        mock_get.return_value = MagicMock(json=lambda: mock_response, raise_for_status=lambda: None)
+        mock_get.return_value = MagicMock(
+            json=lambda: mock_response, raise_for_status=lambda: None
+        )
         weather_cli.geocode_city("Atlantis")
 
 
@@ -80,7 +84,9 @@ def test_fetch_weather_success():
     }
 
     with patch("requests.get") as mock_get:
-        mock_get.return_value = MagicMock(json=lambda: mock_response, raise_for_status=lambda: None)
+        mock_get.return_value = MagicMock(
+            json=lambda: mock_response, raise_for_status=lambda: None
+        )
 
         data = weather_cli.fetch_weather(52.52, 13.41)
 

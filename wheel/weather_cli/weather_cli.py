@@ -35,7 +35,12 @@ def geocode_city(city: str):
             sys.exit(1)
 
         result = data["results"][0]
-        return result["latitude"], result["longitude"], result["name"], result["country"]
+        return (
+            result["latitude"],
+            result["longitude"],
+            result["name"],
+            result["country"],
+        )
 
     except Exception as e:
         print(f"❌ Geocoding error: {e}")
@@ -65,7 +70,8 @@ def fetch_weather(lat: float, lon: float):
     """
     try:
         response = requests.get(
-            WEATHER_URL, params={"latitude": lat, "longitude": lon, "current_weather": True}
+            WEATHER_URL,
+            params={"latitude": lat, "longitude": lon, "current_weather": True},
         )
         response.raise_for_status()
         return response.json()

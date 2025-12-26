@@ -93,7 +93,9 @@ def test_cli_default_length(capsys):
     with (
         patch(
             "argparse.ArgumentParser.parse_args",
-            return_value=argparse.Namespace(length=12, no_digits=False, no_specials=False),
+            return_value=argparse.Namespace(
+                length=12, no_digits=False, no_specials=False
+            ),
         ),
         patch(
             "password_generator.password_generator.PasswordGenerator.generate",
@@ -112,7 +114,9 @@ def test_cli_no_digits(capsys):
     with (
         patch(
             "argparse.ArgumentParser.parse_args",
-            return_value=argparse.Namespace(length=8, no_digits=True, no_specials=False),
+            return_value=argparse.Namespace(
+                length=8, no_digits=True, no_specials=False
+            ),
         ),
         patch(
             "password_generator.password_generator.PasswordGenerator.generate",
@@ -131,7 +135,9 @@ def test_cli_no_specials(capsys):
     with (
         patch(
             "argparse.ArgumentParser.parse_args",
-            return_value=argparse.Namespace(length=8, no_digits=False, no_specials=True),
+            return_value=argparse.Namespace(
+                length=8, no_digits=False, no_specials=True
+            ),
         ),
         patch(
             "password_generator.password_generator.PasswordGenerator.generate",
@@ -150,10 +156,13 @@ def test_cli_custom_length(capsys):
     with (
         patch(
             "argparse.ArgumentParser.parse_args",
-            return_value=argparse.Namespace(length=5, no_digits=False, no_specials=False),
+            return_value=argparse.Namespace(
+                length=5, no_digits=False, no_specials=False
+            ),
         ),
         patch(
-            "password_generator.password_generator.PasswordGenerator.generate", return_value="ABCDE"
+            "password_generator.password_generator.PasswordGenerator.generate",
+            return_value="ABCDE",
         ),
     ):
         from password_generator.password_generator import main
