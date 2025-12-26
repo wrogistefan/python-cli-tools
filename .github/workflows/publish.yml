@@ -16,8 +16,10 @@ jobs:
         with:
           fetch-depth: 0  # potrzebne do weryfikacji podpisu
 
-      - name: Fetch tags
-        run: git fetch --tags
+      - name: Fetch the tag object
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          git fetch origin tag "$TAG"
 
       - name: Verify GPG tag signature
         run: |
