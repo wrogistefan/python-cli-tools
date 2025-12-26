@@ -3,12 +3,12 @@
 
 # Python CLI Tools
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![CI Pipeline](https://github.com/wrogistefan/python-cli-tools/actions/workflows/tests.yml/badge.svg)
-[![codecov](https://codecov.io/gh/wrogistefan/python-cli-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/wrogistefan/python-cli-tools)
-[![PyPI version](https://img.shields.io/pypi/v/python-cli-tools.svg)](https://pypi.org/project/python-cli-tools/)
-[![Wheel](https://img.shields.io/pypi/wheel/python-cli-tools.svg)](https://pypi.org/project/python-cli-tools/)
+[![PyPI](https://img.shields.io/pypi/v/python-cli-tools?label=PyPI&logo=pypi)](https://pypi.org/project/python-cli-tools/)
+[![Tests](https://github.com/wrogistefan/python-cli-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/wrogistefan/python-cli-tools/actions/workflows/tests.yml)
+[![Publish](https://github.com/wrogistefan/python-cli-tools/actions/workflows/publish.yml/badge.svg)](https://github.com/wrogistefan/python-cli-tools/actions/workflows/publish.yml)
+[![PEP 621](https://img.shields.io/badge/pyproject.toml-PEP%20621-blue)](https://peps.python.org/pep-0621/)
+[![License](https://img.shields.io/github/license/wrogistefan/python-cli-tools)](https://github.com/wrogistefan/python-cli-tools/blob/main/LICENSE)
+
 
 
 A collection of practical, well-tested command-line utilities implemented in Python. This project demonstrates modular CLI tool development with a clean `src/` layout, comprehensive testing, and easy distribution via PyPI.

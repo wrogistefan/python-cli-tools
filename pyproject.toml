@@ -1,43 +1,47 @@
 [build-system]
-requires = ["setuptools==67.8.0", "wheel"]
+requires = ["setuptools>=69.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python_cli_tools"
-version = "0.2.5"
-description = "A collection of practical Python CLI tools"
+name = "python-cli-tools"
+version = "0.2.6"
+description = "A collection of lightweight, production-ready Python CLI utilities."
 readme = "README.md"
+requires-python = ">=3.10"
 license = { file = "LICENSE" }
 authors = [
-  { name = "Łukasz Perek" }
+    { name = "Łukasz Perek", email = "lukasz.perek@outlook.com" }
 ]
-requires-python = ">=3.10"
+
+keywords = ["cli", "tools", "utilities", "python", "command-line"]
 
 classifiers = [
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Operating System :: OS Independent",
-  "Intended Audience :: Developers",
-  "Topic :: Utilities",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Topic :: Utilities"
 ]
 
-dependencies = [
-  "requests>=2.31.0",
-]
-
-keywords = ["cli", "tools", "utilities", "command-line", "python"]
+dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/wrogistefan/python-cli-tools"
 Repository = "https://github.com/wrogistefan/python-cli-tools"
-Changelog = "https://github.com/wrogistefan/python-cli-tools/blob/main/CHANGELOG.md"
+Issues = "https://github.com/wrogistefan/python-cli-tools/issues"
 
-[project.scripts]
-file-organizer = "file_organizer.file_organizer:main"
-password-generator = "password_generator.password_generator:main"
-weather-cli = "weather_cli.weather_cli:main"
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "build",
+    "twine",
+    "ruff",
+]
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.setuptools]
+packages = ["python_cli_tools"]

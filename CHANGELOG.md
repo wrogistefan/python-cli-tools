@@ -4,6 +4,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.2.6 — 2025-12-26
+🔐 GPG Signature Verified  
+This release confirms full GPG signing integration using key 9EC4ECA6A8A65C76. Tag test-gpg is cryptographically verified and recognized by GitHub.
+
+🛠️ Secure Publish Workflow Finalized  
+The publish.yml workflow now enforces GPG tag verification before triggering PyPI deployment. Only signed tags from the verified keyholder can initiate releases.
+
+📦 Metadata and Badge Block Polished  
+README badges for PyPI, tests, publish status, and license are finalized. All links and labels are stable and production-ready.
+
+🧾 CHANGELOG and Versioning Synced  
+Version v0.2.6 supersedes v0.2.5 for internal consistency. All release artifacts are aligned with signed tag and verified commit
+
 ## 0.2.3 — 2025-12-26
 
 ### Added
