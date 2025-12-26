@@ -4,6 +4,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.2.9] — 2025-12-26
+
+### Fixed
+- Further improved GPG tag verification in publish workflow by fetching the specific tag object.
+- Ensures annotated signed tags are properly detected and verified before publishing.
+
+### Notes
+- This release fixes the tag fetching issue for reliable publishing.
+- No functional code changes.
+
 ## [v0.2.8] — 2025-12-26
 
 ### Fixed
