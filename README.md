@@ -263,3 +263,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Łukasz Perek**
 
 This project serves as a portfolio piece demonstrating practical CLI development, modular Python packaging, and the transition into software engineering and AI freelancing.
+git add README.md

@@ -27,7 +27,6 @@ dependencies = [
     "requests>=2.31.0",
 ]
 
-
 keywords = ["cli", "tools", "utilities", "command-line", "python"]
 
 [project.urls]
@@ -39,7 +38,6 @@ Changelog = "https://github.com/wrogistefan/python-cli-tools/blob/main/CHANGELOG
 file-organizer = "file_organizer.file_organizer:main"
 password-generator = "password_generator.password_generator:main"
 weather-cli = "weather_cli.weather_cli:main"
-
 
 [tool.setuptools.packages.find]
 where = ["src"]
