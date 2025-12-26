@@ -1,4 +1,3 @@
-
 # Python CLI Tools
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -6,119 +5,255 @@
 ![Tests](https://github.com/wrogistefan/python-cli-tools/actions/workflows/tests.yml/badge.svg)
 [![codecov](https://codecov.io/gh/wrogistefan/python-cli-tools/branch/main/graph/badge.svg)](https://codecov.io/gh/wrogistefan/python-cli-tools)
 
-A collection of small, well-tested command-line utilities implemented in Python. Each tool is self-contained, tested, and designed to be easy to run locally or install as a console command.
+A collection of practical, well-tested command-line utilities implemented in Python. This project demonstrates modular CLI tool development with a clean `src/` layout, comprehensive testing, and easy distribution via PyPI.
 
-Key features
-- Small, focused CLI tools: file organizer, password generator, and weather CLI
-- Unit tests with `pytest`
-- Simple packaging via `pyproject.toml` with console scripts
+## Table of Contents
 
-Contents
-- [Usage examples](docs/usage_examples.md)
-- Project structure and developer instructions below
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tools](#tools)
+  - [File Organizer](#file-organizer)
+  - [Password Generator](#password-generator)
+  - [Weather CLI](#weather-cli)
+- [Testing](#testing)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
 
-## Quickstart
+## Features
 
-1. Clone the repository and create a virtual environment
+- **Modular Design**: Each tool is isolated in its own package under `src/`, promoting maintainability and reusability.
+- **Comprehensive Testing**: Unit tests with `pytest` ensure reliability and facilitate refactoring.
+- **Console Scripts**: Tools are installable as command-line scripts via `pyproject.toml`.
+- **Minimal Dependencies**: Only essential libraries are used, with `requests` for network operations.
+- **Cross-Platform**: Compatible with Windows, macOS, and Linux.
+- **Open Source**: Licensed under MIT, encouraging contributions and modifications.
 
-```bash
-git clone https://github.com/wrogistefan/python-cli-tools.git
-cd python-cli-tools
-python -m venv .venv
-# Windows PowerShell
-.venv\\Scripts\\Activate.ps1
-# macOS / Linux
-source .venv/bin/activate
+## Project Structure
+
+```
+python-cli-tools/
+├── src/
+│   ├── file_organizer/
+│   │   ├── __init__.py
+│   │   └── file_organizer.py
+│   ├── password_generator/
+│   │   ├── __init__.py
+│   │   └── password_generator.py
+│   └── weather_cli/
+│       ├── __init__.py
+│       └── weather_cli.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_file_organizer.py
+│   ├── test_password_generator.py
+│   └── test_weather_cli.py
+├── docs/
+│   └── usage_examples.md
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── pyproject.toml
+├── requirements.txt
+└── .gitignore
 ```
 
-2. Install dependencies (editable install registers console scripts)
+## Installation
+
+### Prerequisites
+
+- Python 3.10 or higher
+- `pip` for package management
+
+### Quick Install
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/wrogistefan/python-cli-tools.git
+   cd python-cli-tools
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv .venv
+   # On Windows (PowerShell)
+   .venv\Scripts\Activate.ps1
+   # On macOS/Linux
+   source .venv/bin/activate
+   ```
+
+3. Install dependencies and the package in editable mode:
+   ```bash
+   pip install -r requirements.txt
+   pip install -e .
+   ```
+
+This installs the tools as console scripts: `file-organizer`, `password-generator`, and `weather-cli`.
+
+## Usage
+
+After installation, run the tools directly from the command line:
 
 ```bash
-pip install -r requirements.txt
-pip install -e .
+file-organizer <directory>
+password-generator
+weather-cli --city "New York"
 ```
 
-After installation you can run tools either as modules, or via the installed console scripts (recommended):
+Alternatively, run as Python modules:
 
 ```bash
-# module form
-python -m file_organizer.file_organizer ./downloads
+python -m file_organizer.file_organizer <directory>
+python -m password_generator.password_generator
+python -m weather_cli.weather_cli --city "New York"
+```
 
-# console scripts (after `pip install -e .`)
+## Tools
+
+### File Organizer
+
+Organizes files in a specified directory into subdirectories based on their file extensions.
+
+**Usage:**
+```bash
+file-organizer <directory>
+```
+
+**Example:**
+```bash
 file-organizer ./downloads
-password-generator -l 16 --no-specials
-weather-cli --city London
-
 ```
 
-### Tools & Usage
-1. File Organizer
-    Organizes files into folders by extension.
-    See file_organizer/file_organizer.py  
-    or run:
-    file-organizer <directory>
+**Sample Output:**
+```
+Moved: report.pdf -> ./downloads/pdf
+Moved: photo.jpg -> ./downloads/jpg
+Moved: README -> ./downloads/no_extension
+```
 
+**Source:** [`src/file_organizer/file_organizer.py`](src/file_organizer/file_organizer.py)
 
+### Password Generator
 
-2. Password Generator
-    Generates strong, customizable passwords.
-    See password_generator/password_generator.py  
-    or run:
-    password-generator
+Generates secure, customizable random passwords with options for length and character sets.
 
-3. Weather CLI (updated in v0.2.0)
-    Fetches real-time weather data using Open-Meteo.
+**Usage:**
+```bash
+password-generator [options]
+```
 
-    Usage
-    Run as a module:
+**Options:**
+- `-l, --length`: Specify password length (default: 12)
+- `--no-digits`: Exclude digits
+- `--no-specials`: Exclude special characters
 
-    bash
-    python -m weather_cli.weather_cli --city New York
-    python -m weather_cli.weather_cli --lat 37.075 --lon 15.286
+**Examples:**
+```bash
+password-generator
+password-generator -l 16 --no-specials
+```
 
-    See [docs/usage_examples.md](docs/usage_examples.md) for more detailed examples and expected output.
+**Sample Output:**
+```
+k9F3nAq2Zo1LmV7$
+```
 
-## Running Tests
+**Source:** [`src/password_generator/password_generator.py`](src/password_generator/password_generator.py)
 
-Run the full test suite with:
+### Weather CLI
+
+Fetches and displays real-time weather data for a specified location using the Open-Meteo API.
+
+**Usage:**
+```bash
+weather-cli --city <city_name>
+weather-cli --lat <latitude> --lon <longitude>
+```
+
+**Examples:**
+```bash
+weather-cli --city "New York"
+weather-cli --lat 37.075 --lon 15.286
+```
+
+**Sample Output:**
+```
+📍 Location: Syracuse, Italy (37.07542, 15.28664)
+
+🌤️  Current Weather:
+   🌡️  Temperature: 12.9°C
+   💨  Wind Speed: 2.5 km/h
+   🧭  Wind Direction: 270°
+   ⏱️  Observation Time: 2025-12-25T17:45
+```
+
+**Source:** [`src/weather_cli/weather_cli.py`](src/weather_cli/weather_cli.py)
+
+For more detailed examples, see [`docs/usage_examples.md`](docs/usage_examples.md).
+
+## Testing
+
+Run the test suite using `pytest`:
 
 ```bash
 pytest
 ```
 
-## Packaging & Distribution
+Tests are located in the `tests/` directory and cover all tools to ensure functionality and prevent regressions.
 
-This project uses `pyproject.toml` + `setuptools`. Console script entry points are defined so installing the package provides the `file-organizer`, `password-generator`, and `weather-cli` commands.
+## Development
 
-To build a source/wheel distribution (requires `build`):
+### Building for Distribution
+
+To build wheel and source distributions:
 
 ```bash
 pip install build
 python -m build
 ```
 
-## Development notes
+Artifacts will be created in the `dist/` directory.
 
-- Use the `docs/usage_examples.md` to expand runnable examples.
+### Code Quality
 
+- Use `black` for code formatting (configured in `pyproject.toml`).
+- Follow PEP 8 style guidelines.
+- Maintain high test coverage.
+
+### Adding New Tools
+
+1. Create a new package under `src/`.
+2. Implement the tool in a module with a `main()` function.
+3. Add console script entry in `pyproject.toml`.
+4. Write comprehensive tests in `tests/`.
+5. Update documentation.
 
 ## Contributing
 
-Contributions are welcome. Please:
+Contributions are welcome! Please follow these steps:
 
-1. Open an issue describing the change
-2. Create a branch, add tests, and open a pull request
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/your-feature-name`.
+3. Write tests for new functionality.
+4. Ensure all tests pass: `pytest`.
+5. Commit your changes: `git commit -m 'Add some feature'`.
+6. Push to the branch: `git push origin feature/your-feature-name`.
+7. Open a pull request.
 
-## CI
-
-Add a simple GitHub Actions workflow to run `pytest` on push and PRs. Example workflow should run on `ubuntu-latest` with Python 3.10+.
+Please read the [contributing guidelines](CONTRIBUTING.md) if available, and ensure your code adheres to the project's standards.
 
 ## License
 
-MIT — see the [LICENSE](LICENSE) file.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Author
 
-Łukasz Perek — project and code samples used for portfolio and learning.
-This project showcases practical CLI tools and documents the transition into software development and AI freelancing.
+**Łukasz Perek**
 
+This project serves as a portfolio piece demonstrating practical CLI development, modular Python packaging, and the transition into software engineering and AI freelancing.
