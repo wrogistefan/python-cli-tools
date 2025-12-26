@@ -7,7 +7,7 @@ name = "python-cli-tools"
 version = "0.2.3"
 description = "A collection of practical Python CLI tools"
 readme = "README.md"
-license = "MIT"
+license = { file = "LICENSE" }
 authors = [
     { name = "Łukasz Perek" }
 ]
