@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-cli-tools"
-version = "0.2.0"
+version = "0.2.1"
 description = "A collection of practical Python CLI tools"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -25,8 +25,9 @@ classifiers = [
 ]
 
 dependencies = [
-    "requests",
+    "requests>=2.31.0",
 ]
+
 
 keywords = ["cli", "tools", "utilities", "command-line", "python"]
 
