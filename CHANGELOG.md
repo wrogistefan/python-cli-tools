@@ -4,6 +4,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.3 — 2025-12-26
+
+### Added
+- First official PyPI release of python-cli-tools.
+- Automated publishing workflow using GitHub Actions.
+- Improved project structure with PEP 621 compliant pyproject.toml.
+
+### Fixed
+- Removed legacy metadata issues related to TestPyPI incompatibility.
+- Ensured clean build process and reproducible packaging.
+
+### Notes
+- TestPyPI is no longer used due to outdated metadata validation.
+
+
 ## [0.2.1] - 2025-01-XX
 ### Fixed
 - Resolved compatibility issue with Python 3.12 causing `weather-cli` to fail due to outdated `requests` dependency.
