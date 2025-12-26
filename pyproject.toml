@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=69.0", "wheel"]
+requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,6 +9,7 @@ description = "A collection of lightweight, production-ready Python CLI utilitie
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
+
 authors = [
     { name = "Łukasz Perek", email = "lukasz.perek@outlook.com" }
 ]
@@ -44,4 +45,5 @@ dev = [
 ]
 
 [tool.setuptools]
-packages = ["python_cli_tools"]
+package-dir = {"" = "src"}
+packages = ["file_organizer", "password_generator", "weather_cli"]
