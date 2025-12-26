@@ -18,7 +18,7 @@ jobs:
 
       - name: Verify GPG tag signature
         run: |
-          TAG=$(git describe --tags --abbrev=0)
+          TAG="${GITHUB_REF#refs/tags/}"
           git verify-tag "$TAG"
 
       - name: Set up Python

@@ -4,6 +4,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.2.7] — 2025-12-26
+
+### Fixed
+- Corrected the `publish.yml` workflow to use `GITHUB_REF` instead of `git describe` when verifying GPG signatures.
+- Ensures that signed tags (e.g., `v0.2.6`) are properly recognized and validated during the publishing pipeline.
+
+### Notes
+- This release contains no functional code changes.
+- CI/CD pipeline is now fully stable and compatible with GPG‑signed releases.
+
+
 ## v0.2.6 — 2025-12-26
 🔐 GPG Signature Verified  
 This release confirms full GPG signing integration using key 9EC4ECA6A8A65C76. Tag test-gpg is cryptographically verified and recognized by GitHub.
