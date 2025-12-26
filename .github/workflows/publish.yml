@@ -19,7 +19,18 @@ jobs:
       - name: Verify GPG tag signature
         run: |
           TAG="${GITHUB_REF#refs/tags/}"
-          git verify-tag "$TAG"
+          OBJECT_TYPE=$(git cat-file -t "$TAG")
+          if [ "$OBJECT_TYPE" = "commit" ]; then
+            echo "Error: Tag '$TAG' is a lightweight tag (points to a commit), not an annotated signed tag."
+            echo "Please delete this tag and create an annotated signed tag using:"
+            echo "  git tag -s $TAG -m 'Release $TAG'"
+            exit 1
+          elif [ "$OBJECT_TYPE" = "tag" ]; then
+            git verify-tag "$TAG"
+          else
+            echo "Error: Unexpected object type '$OBJECT_TYPE' for tag '$TAG'."
+            exit 1
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
