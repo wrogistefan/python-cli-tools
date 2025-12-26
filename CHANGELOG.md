@@ -4,6 +4,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.2.8] — 2025-12-26
+
+### Fixed
+- Improved GPG tag verification in publish workflow with clearer error messages for lightweight tags.
+- Ensures only properly signed annotated tags trigger PyPI publishing.
+
+### Notes
+- This release contains workflow improvements for reliable publishing.
+- No functional code changes.
+
 ## [v0.2.7] — 2025-12-26
 
 ### Fixed
