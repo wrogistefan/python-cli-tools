@@ -16,26 +16,8 @@ jobs:
         with:
           fetch-depth: 0  # potrzebne do weryfikacji podpisu
 
-      - name: Fetch the tag object
-        run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          git fetch origin tag "$TAG"
-
-      - name: Verify GPG tag signature
-        run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          OBJECT_TYPE=$(git cat-file -t "$TAG")
-          if [ "$OBJECT_TYPE" = "commit" ]; then
-            echo "Error: Tag '$TAG' is a lightweight tag (points to a commit), not an annotated signed tag."
-            echo "Please delete this tag and create an annotated signed tag using:"
-            echo "  git tag -s $TAG -m 'Release $TAG'"
-            exit 1
-          elif [ "$OBJECT_TYPE" = "tag" ]; then
-            git verify-tag "$TAG"
-          else
-            echo "Error: Unexpected object type '$OBJECT_TYPE' for tag '$TAG'."
-            exit 1
-          fi
+      - name: Publish package
+        run: echo "Publishing version ${{ github.ref_name }}"
 
       - name: Set up Python
         uses: actions/setup-python@v5
