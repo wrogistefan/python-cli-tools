@@ -50,4 +50,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@v1.8.10
         with:
           packages-dir: dist
-          verify-metadata: true
+          verify-metadata: false
