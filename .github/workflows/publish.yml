@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   publish:
+    environment: release
     name: Publish if tag is GPG signed
     runs-on: ubuntu-latest
 
