@@ -1,3 +1,0 @@
-file_organizer
-password_generator
-weather_cli
