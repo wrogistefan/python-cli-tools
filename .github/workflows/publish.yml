@@ -17,15 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Remove runner cache
-        run: |
-          rm -rf ~/.cache/pip
-          rm -rf ~/.cache/pypoetry
-          rm -rf ~/.cache/build
-          rm -rf ~/.local/share/pip
 
       - name: Clean workspace
         run: |
@@ -43,9 +34,11 @@ jobs:
         run: pip install build
 
       - name: Build package
+        working-directory: python-cli-tools
         run: python -m build
 
       - name: Publish to PyPI
+        working-directory: python-cli-tools
         uses: pypa/gh-action-pypi-publish@v1.8.10
         with:
           packages-dir: dist
