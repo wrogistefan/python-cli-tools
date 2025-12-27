@@ -6,34 +6,33 @@ on:
       - 'v*'
 
 permissions:
-  id-token: write  # wymagane dla Trusted Publishers
+  id-token: write
   contents: read
 
 jobs:
   publish:
-    environment: release
-    name: Publish if tag is GPG signed
     runs-on: ubuntu-latest
+    environment: release
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Fetch tags
-        run: git fetch --tags --force
-
-      - name: Import public GPG key
-        run: echo "$GPG_PUBLIC_KEY" | gpg --import
-        env:
-          GPG_PUBLIC_KEY: ${{ secrets.GPG_PUBLIC_KEY }}
-
-      - name: Verify GPG tag signature
+      - name: Remove runner cache
         run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          echo "Verifying tag: $TAG"
-          git verify-tag "$TAG"
+          rm -rf ~/.cache/pip
+          rm -rf ~/.cache/pypoetry
+          rm -rf ~/.cache/build
+          rm -rf ~/.local/share/pip
+
+      - name: Clean workspace
+        run: |
+          rm -rf dist
+          rm -rf build
+          rm -rf *.egg-info
+          rm -rf src/*.egg-info
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -46,7 +45,7 @@ jobs:
       - name: Build package
         run: python -m build
 
-      - name: Publish to PyPI (Trusted Publishers)
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@v1.8.10
         with:
           packages-dir: dist
